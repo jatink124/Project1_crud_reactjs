@@ -60,13 +60,13 @@ export default function NavBar() {
                             <Link to="/">List Users</Link>
                             </li>
                             <li className="text-gray-600 hover:text-blue-600">
-                            <Link to="user/create">Create User</Link>
+                            <Link to="/create">Create User</Link>
                             </li>
                             <li className="text-gray-600 hover:text-blue-600">
-                                <a href="/Update">Update User</a>
+                                <Link to="/update">Update User</Link>
                             </li>
                             <li className="text-gray-600 hover:text-blue-600">
-                                <a href="/Delete">Delete User</a>
+                                <Link to="/delete">Delete User</Link>
                             </li>
                         </ul>
                     </div>
