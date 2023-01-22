@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate, useParams } from "react-router-dom";
 
-export default function ListUser() {
+export default function Delete() {
     const navigate = useNavigate();
     const [users, setUsers] = useState([]);
     useEffect(() => {
@@ -26,7 +26,7 @@ export default function ListUser() {
     }
     return (
         <div>
-            <h1>List Users</h1>
+        
             <table>
                 <thead>
                     <tr>
@@ -45,7 +45,7 @@ export default function ListUser() {
                             <td>{user.email}</td>
                             <td>{user.mobile}</td>
                             <td>
-                                <Link to={`user/${user.id}/edit`} style={{marginRight: "10px"}}>Edit</Link>
+                               
                                 <button onClick={() => deleteUser(user.id)}>Delete</button>
                             </td>
                         </tr>

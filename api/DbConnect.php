@@ -3,11 +3,15 @@
 	* Database Connection
 	*/
 	class DbConnect {
-		private $server = 'localhost';
-		private $dbname = 'react_crud';
-		private $user = 'root';
-		private $pass = '';
+		// private $server = 'localhost';
+		// private $dbname = 'test';
+		// private $user = 'root';
+		// private $pass = '';
 
+		private $server = 'db1.cfmlxjs2thks.ap-northeast-1.rds.amazonaws.com';
+		private $dbname = 'test';
+		private $user = 'admin';
+		private $pass = 'Iamjatin123';
 		public function connect() {
 			try {
 				$conn = new PDO('mysql:host=' .$this->server .';dbname=' . $this->dbname, $this->user, $this->pass);

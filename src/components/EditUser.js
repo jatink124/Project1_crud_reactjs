@@ -14,9 +14,12 @@ export default function ListUser() {
     }, []);
 
     function getUser() {
-        axios.get(`http://localhost:8888/api/user/${id}`).then(function(response) {
-            console.log(response.data);
-            setInputs(response.data);
+        
+        axios.get(`http://localhost/php-react-category/getuserid.php/?id=${id}`).then(function(response) {
+        
+        console.log(response.data);
+            setInputs(response.data.users[0]);
+            debugger;
         });
     }
 
@@ -27,8 +30,7 @@ export default function ListUser() {
     }
     const handleSubmit = (event) => {
         event.preventDefault();
-
-        axios.put(`http://localhost:8888/api/user/${id}/edit`, inputs).then(function(response){
+      axios.post(`http://localhost/php-react-category/update-user.php/?id=${id}`, inputs).then(function(response){
             console.log(response.data);
             navigate('/');
         });
@@ -36,42 +38,50 @@ export default function ListUser() {
     }
     return (
         <div>
-            <h1>Edit user</h1>
-            <form onSubmit={handleSubmit}>
-                <table cellSpacing="10">
-                    <tbody>
-                        <tr>
-                            <th>
-                                <label>Name: </label>
-                            </th>
-                            <td>
-                                <input value={inputs.name} type="text" name="name" onChange={handleChange} />
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                <label>Email: </label>
-                            </th>
-                            <td> 
-                                <input value={inputs.email} type="text" name="email" onChange={handleChange} />
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                <label>Mobile: </label>
-                            </th>
-                            <td>
-                                <input value={inputs.mobile} type="text" name="mobile" onChange={handleChange} />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colSpan="2" align ="right">
-                                <button>Save</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </form>
+             <form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg grid md:grid-cols-3 gap-4 max-w-7xl mx-auto">
+      <div className="mb-4">
+        <label className="block text-gray-700 font-medium mb-2" for="name">
+          Name
+        </label>
+        <input
+          className="border border-gray-400 p-2 rounded-lg w-full"
+          type="text"
+          id="name"
+          name="name"
+          value={inputs.name}
+          onChange={handleChange}
+        />
+      </div>
+      <div className="mb-4">
+        <label className="block text-gray-700 font-medium mb-2" for="email">
+          Email
+        </label>
+        <input
+          className="border border-gray-400 p-2 rounded-lg w-full"
+          type="email"
+          id="email"
+          name="email"
+         value={inputs.email}
+          onChange={handleChange}
+        />
+      </div>
+      <div className="mb-4">
+        <label className="block text-gray-700 font-medium mb-2" for="mobile">
+          Mobile
+        </label>
+        <input
+          className="border border-gray-400 p-2 rounded-lg w-full"
+          type="text"
+          id="mobile"
+          name="mobile"
+          value={inputs.mobile}
+          onChange={handleChange}
+        />
+      </div>
+      <button className="bg-indigo-500 text-white w-1/5 p-2 rounded-lg hover:bg-indigo-600">
+        Submit
+      </button>
+    </form>
         </div>
     )
 }

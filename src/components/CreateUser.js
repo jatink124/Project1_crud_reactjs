@@ -14,9 +14,8 @@ export default function ListUser() {
     }
     const handleSubmit = (event) => {
         event.preventDefault();
-
-        axios.post('http://localhost:8888/api/user/save', inputs).then(function(response){
-            console.log(response.data);
+     axios.post('http://localhost/php-react-category/add_category.php', inputs).then(function(response){
+     console.log(response.data);
             navigate('/');
         });
         
